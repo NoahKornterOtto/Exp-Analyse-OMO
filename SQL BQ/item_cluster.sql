@@ -1,0 +1,10 @@
+  --ca 8,6 GB
+  
+  SELECT
+   ITEM_H_SK, 
+   IS_DEALBUY, 
+   IS_NOS, 
+   CLUSTER_DIM1,
+   CLUSTER_DIM2
+FROM `{dataset_id}.{table_id}`
+WHERE GESCHAEFTSJAHR_HALBJAHR = 202401

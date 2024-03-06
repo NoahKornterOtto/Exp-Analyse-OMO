@@ -19,10 +19,14 @@ client = bigquery.Client(project=project_id)
 def fetch_data_to_pkl(dataset_id, table_id, filename):
     # SQL-Abfrage nach season und limitiere die Ergebnisse 
     query = f"""
-    SELECT *
-    FROM `{dataset_id}.{table_id}`
-    WHERE season = 149
-    LIMIT 1000
+  SELECT
+   ITEM_H_SK, 
+   IS_DEALBUY, 
+   IS_NOS, 
+   CLUSTER_DIM1,
+   CLUSTER_DIM2
+FROM `{dataset_id}.{table_id}`
+WHERE GESCHAEFTSJAHR_HALBJAHR = 202401
     """
 
     # Führe die Abfrage aus und konvertiere die Ergebnisse in ein pandas DataFrame
@@ -34,6 +38,6 @@ def fetch_data_to_pkl(dataset_id, table_id, filename):
 
 # Beispiel für die Verwendung
 dataset_id = 'basisdaten'  # Dataset-ID
-table_id = 'artikelhierarchie'  # Tabellen-ID
-filename = './data/artikelhierarchie.pkl'  # Gewünschter Pfad der Ausgabe-CSV-Datei
+table_id = 'item_cluster'  # Tabellen-ID
+filename = './data/item_cluster.pkl'  # Gewünschter Pfad der Ausgabe-CSV-Datei
 fetch_data_to_pkl(dataset_id, table_id, filename)
