@@ -16,7 +16,7 @@ project_id = 'brain-soso-dev'
 # Initialisiere den BigQuery-Client mit der angegebenen Projekt-ID
 client = bigquery.Client(project=project_id)
 
-def fetch_data_to_csv(dataset_id, table_id, filename):
+def fetch_data_to_pkl(dataset_id, table_id, filename):
     # SQL-Abfrage nach season und limitiere die Ergebnisse 
     query = f"""
     SELECT *
@@ -34,6 +34,6 @@ def fetch_data_to_csv(dataset_id, table_id, filename):
 
 # Beispiel für die Verwendung
 dataset_id = 'basisdaten'  # Dataset-ID
-table_id = 'item_cluster'  # Tabellen-ID
-filename = './data/item_cluster.pkl'  # Gewünschter Pfad der Ausgabe-CSV-Datei
-fetch_data_to_csv(dataset_id, table_id, filename)
+table_id = 'artikelhierarchie'  # Tabellen-ID
+filename = './data/artikelhierarchie.pkl'  # Gewünschter Pfad der Ausgabe-CSV-Datei
+fetch_data_to_pkl(dataset_id, table_id, filename)
